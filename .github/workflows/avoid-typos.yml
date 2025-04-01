@@ -8,8 +8,14 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   misspell:
+    permissions:
+      contents: read  # for actions/checkout to fetch code
+      pull-requests: write  # for reviewdog/action-misspell to report issues using PR comments
     name: runner / misspell
     runs-on: ubuntu-latest
     steps:

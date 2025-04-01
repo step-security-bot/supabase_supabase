@@ -2,6 +2,9 @@ name: Auto Label Issues
 on:
   issues:
     types: [opened, reopened]
+permissions:
+  contents: read
+
 jobs:
   check-external:
     runs-on: ubuntu-latest
